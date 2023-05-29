@@ -121,7 +121,7 @@ section{
     margin-bottom:14px;
     background: none;
     border-radius: 5px;
-}
+} 
 .buttons .clear-canvas{
     color:#6c757d;
     border:1px solid #6c757d;
@@ -138,3 +138,7 @@ section{
 .drawing-board{
     flex:1;
 }
+.drawing-board canvas{
+    width: 100%;
+    height: 100%;
+} 
