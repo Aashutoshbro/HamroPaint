@@ -70,12 +70,28 @@ section{
 .colors .option{
     height: 20px;
     width: 20px;
-    background:red;
+    
     border-radius: 50%;
     margin-top:3px;
     position: relative;
 }
-.colors .option::before{
+.colors .option:nth-child(1){
+    background:white;
+    border:1px solid #bfbfbf;
+}
+.colors .option:nth-child(2){
+    background:black;
+}
+.colors .option:nth-child(3){
+    background:red;
+}
+.colors .option:nth-child(4){
+    background:greenyellow;
+}
+.colors .option:nth-child(5){
+    background:#4A98F7;
+}
+.colors .option.selected::before{
     position: absolute;
     content: "";
     top:50%;
@@ -86,6 +102,38 @@ section{
     border-radius:inherit;
     border: 2px solid white;
     transform: translate(-50%, -50%);
+}
+.colors .option:first-child.selected::before{
+    border-color: #ccc;
+}
+.option #color-picker{
+    opacity: 0;
+    cursor:pointer;
+}
+
+.buttons button{
+    width:100%;
+    color:#fff;
+    border:none;
+    outline:none;
+    padding:11px 0;
+    font-size: 0.9rem;
+    margin-bottom:14px;
+    background: none;
+    border-radius: 5px;
+}
+.buttons .clear-canvas{
+    color:#6c757d;
+    border:1px solid #6c757d;
+    transition: all 0.3s ease;
+}
+.clear-canvas:hover{
+    color:white;
+    background:#4A98F7;
+}
+.buttons .save-img{
+    background:#4A98F7;
+    border:1px solid #4A98F7;
 }
 .drawing-board{
     flex:1;
