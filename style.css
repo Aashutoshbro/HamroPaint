@@ -73,11 +73,19 @@ section{
     background:red;
     border-radius: 50%;
     margin-top:3px;
+    position: relative;
 }
 .colors .option::before{
     position: absolute;
     content: "";
-    
+    top:50%;
+    left:50%;
+    height: 12px;
+    width: 12px;
+    background:inherit;
+    border-radius:inherit;
+    border: 2px solid white;
+    transform: translate(-50%, -50%);
 }
 .drawing-board{
     flex:1;
