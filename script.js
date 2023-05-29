@@ -2,7 +2,11 @@ const canvas = document.querySelector("canvas"),
 toolBtns = document.querySelectorAll(".tool"),
 ctx = canvas.getContext("2d");
 
-let isDrawing = false,
+
+//global variables with default value
+let prevMouseX, prevMouseY, snapshot,
+isDrawing = false,
+selectedTool = "brush",
 brushWidth = 5;
 
 window.addEventListener("load", () => {
@@ -11,22 +15,40 @@ window.addEventListener("load", () => {
     canvas.height = canvas.offsetHeight;
 });
 
-const startDraw = () => {
+const drawRect = (e) => {
+    ctx.strokeRect(e.offsetX, e.offsetY , prevMouseX - e.offsetX, prevMouseY - e.offsetY);
+}
+
+const startDraw = (e) => {
     isDrawing = true;
-    ctx.beginPath(); // cerating new path to draw 
+    prevMouseX = e.offsetX; // passing current mouseX position as prevMouseX value
+    prevMouseY = e.offsetY; // passing current mouseY position as prevMouseY value
+    ctx.beginPath(); // creating new path to draw 
     ctx.lineWidth = brushWidth; //passing brushsize as line width
+    snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
 }
 
 //writing drawing function enables the drawing feature before adding startdraw and after added startDraw we can actually draw from the tip of mouse pointer
 const drawing = (e) => {
     if(!isDrawing) return;
-    ctx.lineTo(e.offsetX, e.offsetY); // creating line according to the mouse pointer
-    ctx.stroke();// drawing/filling line with color
+    ctx.putImageData(snapshot, 0, 0);// adding copied canvas data on this canvas
+
+    if(selectedTool === "brush"){
+        ctx.lineTo(e.offsetX, e.offsetY); // creating line according to the mouse pointer
+        ctx.stroke();// drawing/filling line with color
+    } else if(selectedTool === "rectangle"){
+        drawRect(e); 
+    }
+    
 }       
 
 toolBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-        console.log(btn.id);
+        // removing active class from the previous option and adding on current clicked option
+        document.querySelector(".options .active").classList.remove("active");
+        btn.classList.add("active");
+        selectedTool = btn.id;
+        console.log(selectedTool);
     })
 });
 
