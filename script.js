@@ -3,6 +3,7 @@ toolBtns = document.querySelectorAll(".tool"),
 fillColor = document.querySelector("#fill-color"),
 sizeSlider = document.querySelector("#size-slider"),
 colorBtns = document.querySelectorAll(".colors .option"),
+colorPicker = document.querySelector("#color-picker"),
 ctx = canvas.getContext("2d");
 
 
@@ -98,6 +99,13 @@ colorBtns.forEach(btn => {
         // passing selected btn background color as selected value
         selectedColor = window.getComputedStyle(btn).getPropertyValue("background-color");
     })
+});
+
+
+colorPicker.addEventListener("change", () => {
+    //passing picked color value from color picker to last colot btn background
+    colorPicker.parentElement.style.background = colorPicker.value;
+    colorPicker.parentElement.click();
 });
 
 
