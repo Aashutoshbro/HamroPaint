@@ -76,20 +76,20 @@ section{
     position: relative;
 }
 .colors .option:nth-child(1){
-    background:white;
+    background-color:white;
     border:1px solid #bfbfbf;
 }
 .colors .option:nth-child(2){
-    background:black;
+    background-color:black;
 }
 .colors .option:nth-child(3){
-    background:red;
+    background-color:red;
 }
 .colors .option:nth-child(4){
-    background:greenyellow;
+    background-color:greenyellow;
 }
 .colors .option:nth-child(5){
-    background:#4A98F7;
+    background-color:#4A98F7;
 }
 .colors .option.selected::before{
     position: absolute;
